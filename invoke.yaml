@@ -1,0 +1,17 @@
+releaser:
+    module_name: minchin.pelican.plugins.wikilinks
+    pypi_name: minchin.pelican.plugins.wikilinks
+    here: .
+    docs: none
+    test: test
+    source: minchin
+    changelog: CHANGELOG.rst
+    version: minchin/pelican/plugins/wikilinks/constants.py
+    test_command: none
+    version_bump: none
+    extra_packages:
+        test:
+            - pelican
+            - setuptools
+            - wheel
+        pypi:
