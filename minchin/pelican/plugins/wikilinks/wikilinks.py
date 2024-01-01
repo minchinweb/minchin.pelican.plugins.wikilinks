@@ -33,7 +33,7 @@ def _populate_link_pairs(generators):
     we can use Pelican's calculated URLS, rather than trying to guess what they
     should be.
     """
-    logger.info("%s Starting `populate_link_pairs()`.", LOG_PREFIX)
+    logger.debug("%s Starting `populate_link_pairs()`.", LOG_PREFIX)
     # for `link_pairs`, the key is the filename (without extension) and the
     # value is the (final) URL that page will be found at.
     link_pairs = {}
@@ -47,11 +47,14 @@ def _populate_link_pairs(generators):
                 pass
 
         for file in chain(*target_list):
-            link_pairs[Path(file.path).stem] = file.url
+            # print(file, type(file))
+            # link_pairs[Path(file.path).stem] = file.url
+            link_pairs[Path(file.source_path).stem] = file.url
 
-    from pprint import pprint
+    # from pprint import pprint
+    #
+    # pprint(link_pairs)
 
-    pprint(link_pairs)
     logger.info("%s %d link pairs found", LOG_PREFIX, len(link_pairs))
 
     return link_pairs
@@ -71,7 +74,7 @@ def _get_file_and_linkname(match):
 
 def _wikilink_replacement(link_pairs, SITEURL, match):
     filename, linkname = _get_file_and_linkname(match)
-    print(f"{filename=}, {linkname=}, {SITEURL=}, {link_pairs=}")
+    # print(f"{filename=}, {linkname=}, {SITEURL=}, {link_pairs=}")
     path = link_pairs.get(filename)
 
     link_structure = (
@@ -144,6 +147,9 @@ def replace_wikilinks(generators):
                 _link_replacement = partial(_wikilink_replacement, link_pairs, SITEURL)
 
                 text = my_article._content
-                text = wikilink_file_regex.sub(repl=_file_replacement, string=text)
-                text = wikilink_regex.sub(repl=_link_replacement, string=text)
-                my_article._content = text
+                if text:
+                    text = wikilink_file_regex.sub(repl=_file_replacement, string=text)
+                    text = wikilink_regex.sub(repl=_link_replacement, string=text)
+                    my_article._content = text
+
+    logger.info("%s complete!", LOG_PREFIX)
