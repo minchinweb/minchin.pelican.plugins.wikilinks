@@ -80,3 +80,14 @@ Future To Dos
 =============
 
 - support link anchors (e.g. ``my work#heading``)
+
+Prior Art
+=========
+
+This plugin relies on much work that has gone before, both explicitly for code
+and implicitely for the encouragement of this even being possible. This list is
+sadly incomplete, but in particlar:
+
+- Johnathan Sundqvist's `Obisidian Plugin for Pelican
+  <https://github.com/jonathan-s/pelican-obsidian>`_ (and forks) -- in
+  particular, for providing inspiration on how to deal with Wiki-style links
