@@ -1,5 +1,5 @@
 __title__ = "minchin.pelican.plugins.wikilinks"
-__version__ = "1.0.0-dev"
+__version__ = "1.0.0"
 __description__ = "Support Wikilinks when generating Pelican sites."
 __author__ = "W. Minchin"
 __email__ = "w_minchin@hotmail.com"
