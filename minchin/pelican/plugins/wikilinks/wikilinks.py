@@ -111,7 +111,7 @@ def _wikilink_file_replacement(link_pairs, SITEURL, match):
             '<a href="{href}" class="wikilinks-file {wikilinks_class}">{linkname}</a>'
         )
 
-    link_structure = link_structure_raw.fromat(
+    link_structure = link_structure_raw.format(
         href=SITEURL + "/" + path if path else "#",
         wikilinks_class="wikilink-found" if path else "wikilink-missing",
         linkname=linkname,

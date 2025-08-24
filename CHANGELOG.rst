@@ -4,8 +4,10 @@ Changelog for Wikilinks for Pelican
 *This is the changelog for ``minchin.pelican.plugins.wikilinks``, a plugin for
 Pelican.*
 
+- **bug**: fix typo
+
 1.0.0 -- 2023-12-31
 -------------------
 
 - **feature**: first pass. Separate from (WIP) CommonMark reader as it can't be
-  run as part of the reader because processing the URL of each page is needed.)
+  run as part of the reader because processing the URL of each page is needed.
