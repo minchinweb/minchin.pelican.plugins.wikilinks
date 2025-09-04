@@ -47,9 +47,16 @@ def _populate_link_pairs(generators):
                 pass
 
         for file in chain(*target_list):
+            # `file` is a `pelican.contents.Article`, etc
+
             # print(file, type(file))
-            # link_pairs[Path(file.path).stem] = file.url
-            link_pairs[Path(file.source_path).stem] = file.url
+
+            # `file.source_path` is a str
+            try:
+                link_pairs[Path(file.source_path).stem] = file.url
+            except Exception as e:
+                logger.error(f'{LOG_PREFIX} Broke building list of link pairs: slug="{file.slug}" source_path="{file.source_path}" url="{file.url}"')
+                raise e
 
     # from pprint import pprint
     #
