@@ -30,7 +30,7 @@ def _populate_link_pairs(generators):
     Create a dictionary of filenames to final URLs.
 
     Needs to be run after the source material has been loaded into Pelican, so
-    we can use Pelican's calculated URLS, rather than trying to guess what they
+    we can use Pelican's calculated URLs, rather than trying to guess what they
     should be.
     """
     logger.debug("%s Starting `populate_link_pairs()`.", LOG_PREFIX)
@@ -55,7 +55,11 @@ def _populate_link_pairs(generators):
             try:
                 link_pairs[Path(file.source_path).stem] = file.url
             except Exception as e:
-                logger.error(f'{LOG_PREFIX} Broke building list of link pairs: slug="{file.slug}" source_path="{file.source_path}" url="{file.url}"')
+                logger.error(
+                    f'{LOG_PREFIX} Broke building list of link pairs: '
+                    f'slug="{file.slug}" source_path="{file.source_path}" '
+                    f'url="{file.url}"'
+                )
                 raise e
 
     # from pprint import pprint
